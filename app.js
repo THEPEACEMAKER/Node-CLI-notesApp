@@ -1,25 +1,26 @@
 const yargs = require("yargs");
+const { addNote } = require("./notes");
 
 // Create add command
 yargs.command({
   command: "add",
-  describe: "Adds two number",
+  describe: "Add New Note",
   builder: {
-    firstNumber: {
-      describe: "First Number",
+    title: {
+      describe: "Note Title",
       demandOption: true, // Required
-      type: "number",
+      type: "string",
     },
-    secondNumber: {
-      describe: "Second Number",
+    body: {
+      describe: "Note Body",
       demandOption: true,
-      type: "number",
+      type: "string",
     },
   },
 
   // Function for your command
   handler(argv) {
-    console.log("Result:", argv.firstNumber + argv.secondNumber);
+    addNote(argv.title, argv.body);
   },
 });
 
