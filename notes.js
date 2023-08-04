@@ -35,6 +35,18 @@ var readNote = function (title) {
   }
 };
 
+var listNotes = function () {
+  let notes = fetchNotes();
+
+  if (notes.length > 0) {
+    notes.forEach((note) => {
+      logNote(note);
+    });
+  } else {
+    console.log("Alert: No Notes Yet");
+  }
+};
+
 let logNote = function (note) {
   console.log("********************************");
   console.log(`Title: ${note.title}`);
@@ -45,4 +57,5 @@ let logNote = function (note) {
 module.exports = {
   addNote,
   readNote,
+  listNotes,
 };
