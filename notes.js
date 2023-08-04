@@ -47,6 +47,19 @@ var listNotes = function () {
   }
 };
 
+var deleteNote = function (title) {
+  let notes = fetchNotes();
+
+  let filteredNotes = notes.filter((note) => note.title !== title);
+
+  if (filteredNotes.length !== notes.length) {
+    fs.writeFileSync("notes.txt", JSON.stringify(filteredNotes));
+    console.log("Alert: Note Deleted successfully");
+  } else {
+    console.log("Alert: Note Doesn't exist");
+  }
+};
+
 let logNote = function (note) {
   console.log("********************************");
   console.log(`Title: ${note.title}`);
@@ -58,4 +71,5 @@ module.exports = {
   addNote,
   readNote,
   listNotes,
+  deleteNote,
 };
