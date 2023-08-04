@@ -23,6 +23,18 @@ var addNote = function (title, body) {
   }
 };
 
+var readNote = function (title) {
+  let notes = fetchNotes();
+
+  let foundNotes = notes.filter((note) => note.title === title);
+
+  if (foundNotes.length > 0) {
+    logNote(foundNotes[0]);
+  } else {
+    console.log("Alert: Not Found");
+  }
+};
+
 let logNote = function (note) {
   console.log("********************************");
   console.log(`Title: ${note.title}`);
@@ -32,4 +44,5 @@ let logNote = function (note) {
 
 module.exports = {
   addNote,
+  readNote,
 };
